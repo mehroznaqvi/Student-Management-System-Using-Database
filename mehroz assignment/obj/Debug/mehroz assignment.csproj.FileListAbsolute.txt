@@ -1,0 +1,10 @@
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\bin\Debug\mehroz assignment.exe.config
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\bin\Debug\mehroz assignment.exe
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\bin\Debug\mehroz assignment.pdb
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\obj\Debug\mehroz assignment.csprojResolveAssemblyReference.cache
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\obj\Debug\mehroz_assignment.formLogin.resources
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\obj\Debug\mehroz_assignment.Properties.Resources.resources
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\obj\Debug\mehroz assignment.csproj.GenerateResource.Cache
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\obj\Debug\mehroz assignment.exe
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\obj\Debug\mehroz assignment.pdb
+c:\users\faisal\documents\visual studio 2015\Projects\mehroz assignment\mehroz assignment\obj\Debug\mehroz_assignment.formStudent.resources

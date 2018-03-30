@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StudentManagementSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="studentId" Type="int" />
+          <Property Name="attendanceStatus" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="StudentManagementSystem">
+          <Key>
+            <PropertyRef Name="studentId" />
+          </Key>
+          <Property Name="studentId" Type="int" Nullable="false" />
+          <Property Name="studentName" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="studentCGPA" Type="float" Nullable="false" />
+          <Property Name="studentSemester" Type="int" Nullable="false" />
+          <Property Name="studentDepartment" Type="char" MaxLength="30" Nullable="false" />
+          <Property Name="studentUniversity" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_StudentManagementSystem_StudentManagementSystem">
+          <End Role="StudentManagementSystem" Type="Self.StudentManagementSystem" Multiplicity="1" />
+          <End Role="StudentManagementSystem1" Type="Self.StudentManagementSystem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StudentManagementSystem">
+              <PropertyRef Name="studentId" />
+            </Principal>
+            <Dependent Role="StudentManagementSystem1">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentManagementSystemModelStoreContainer">
+          <EntitySet Name="Attendance" EntityType="Self.Attendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentManagementSystem" EntityType="Self.StudentManagementSystem" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_StudentManagementSystem_StudentManagementSystem" Association="Self.FK_StudentManagementSystem_StudentManagementSystem">
+            <End Role="StudentManagementSystem" EntitySet="StudentManagementSystem" />
+            <End Role="StudentManagementSystem1" EntitySet="StudentManagementSystem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="StudentManagementSystem">
+          <Key>
+            <PropertyRef Name="studentId" />
+          </Key>
+          <Property Name="studentId" Type="Int32" Nullable="false" />
+          <Property Name="studentName" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="studentCGPA" Type="Double" Nullable="false" />
+          <Property Name="studentSemester" Type="Int32" Nullable="false" />
+          <Property Name="studentDepartment" Type="String" MaxLength="30" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="studentUniversity" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="StudentManagementSystem1" Relationship="Self.FK_StudentManagementSystem_StudentManagementSystem" FromRole="StudentManagementSystem" ToRole="StudentManagementSystem1" />
+          <NavigationProperty Name="StudentManagementSystem2" Relationship="Self.FK_StudentManagementSystem_StudentManagementSystem" FromRole="StudentManagementSystem1" ToRole="StudentManagementSystem" />
+        </EntityType>
+        <Association Name="FK_StudentManagementSystem_StudentManagementSystem">
+          <End Role="StudentManagementSystem" Type="Self.StudentManagementSystem" Multiplicity="1" />
+          <End Role="StudentManagementSystem1" Type="Self.StudentManagementSystem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="StudentManagementSystem">
+              <PropertyRef Name="studentId" />
+            </Principal>
+            <Dependent Role="StudentManagementSystem1">
+              <PropertyRef Name="studentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentManagementSystemEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="StudentManagementSystems" EntityType="Self.StudentManagementSystem" />
+          <AssociationSet Name="FK_StudentManagementSystem_StudentManagementSystem" Association="Self.FK_StudentManagementSystem_StudentManagementSystem">
+            <End Role="StudentManagementSystem" EntitySet="StudentManagementSystems" />
+            <End Role="StudentManagementSystem1" EntitySet="StudentManagementSystems" />
+          </AssociationSet>
+          <EntitySet Name="Attendances" EntityType="StudentManagementSystemModel.Attendance" />
+        </EntityContainer>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="AttendanceId" />
+          </Key>
+          <Property Name="AttendanceId" Type="Int32" Nullable="false" />
+          <Property Name="studentId" Type="Int32" />
+          <Property Name="attendanceStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentManagementSystemModelStoreContainer" CdmEntityContainer="StudentManagementSystemEntities1">
+          <EntitySetMapping Name="StudentManagementSystems">
+            <EntityTypeMapping TypeName="StudentManagementSystemModel.StudentManagementSystem">
+              <MappingFragment StoreEntitySet="StudentManagementSystem">
+                <ScalarProperty Name="studentId" ColumnName="studentId" />
+                <ScalarProperty Name="studentName" ColumnName="studentName" />
+                <ScalarProperty Name="studentCGPA" ColumnName="studentCGPA" />
+                <ScalarProperty Name="studentSemester" ColumnName="studentSemester" />
+                <ScalarProperty Name="studentDepartment" ColumnName="studentDepartment" />
+                <ScalarProperty Name="studentUniversity" ColumnName="studentUniversity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="StudentManagementSystemModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="attendanceStatus" ColumnName="attendanceStatus" />
+                <ScalarProperty Name="studentId" ColumnName="studentId" />
+                <ScalarProperty Name="AttendanceId" ColumnName="AttendanceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
